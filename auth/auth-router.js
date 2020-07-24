@@ -5,12 +5,6 @@ const bcrypt = require("bcryptjs");
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json({
-    message: "Welcome into the API!",
-  });
-});
-
 router.post("/register", async (req, res, next) => {
   try {
     const { username, password } = req.body;
