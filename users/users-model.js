@@ -8,19 +8,17 @@ function findById(id) {
   return db("users").where({ id }).first();
 }
 
-function add(users) {
-  return db("users")
-    .insert(user, "id")
-    .then(([id]) => findById(id));
+function update(id, updates) {
+  return db("users").where({ id }).update(updates);
 }
 
 function remove(id) {
-  return db("users").where({ id }).delete();
+  return db("users").where({ id }).del();
 }
 
 module.exports = {
   find,
   findById,
-  add,
+  update,
   remove,
 };
