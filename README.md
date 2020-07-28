@@ -83,19 +83,23 @@
 
 ## - Projects Router
 
-8.  GET All Projects for a user:
+8.  GET All Projects:
+
+         GET - /projects
+
+9.  GET All Projects for a user:
 
          GET - /:userId/projects
 
          * requires token from login function set to "Authorization" header.
 
-9.  GET A users single project by project ID:
+10. GET A users single project by project ID:
 
-         GET - /:userId/projects/:id
+        GET - /:userId/projects/:id
 
-         * requires token from login function set to "Authorization" header.
+        * requires token from login function set to "Authorization" header.
 
-10. ADD A project by user ID:
+11. ADD A project by user ID:
 
         POST - /:userId/projects
 
@@ -110,7 +114,7 @@
 
         * requires token from login function set to "Authorization" header.
 
-11. UPDATE A users project by project ID:
+12. UPDATE A users project by project ID:
 
         PUT - /:userId/projects/:id
 
@@ -125,7 +129,7 @@
 
         * requires token from login function set to "Authorization" header.
 
-12. DELETE A users project by project ID:
+13. DELETE A users project by project ID:
 
         DELETE - /:userId/projects/:id
 
