@@ -21,17 +21,17 @@ const update = (userId, id, changes) => {
 };
 
 function findProjects(id) {
-  return db("projects")
-    .innerJoin("users", "users.id", "projects.user_id")
+  return db("projects as p")
     .select(
-      "projects.title",
-      "projects.description",
-      "projects.goal_amount",
-      "projects.amount_received",
-      "projects.funding_completed",
-      "users.username"
+      "u.id as user_id",
+      "p.title",
+      "p.description",
+      "p.goal_amount",
+      "p.amount_received",
+      "p.funding_completed"
     )
-    .where({ project_id: id });
+    .join("users as u", "p.user_id", "u.id")
+    .where("p.user_id", id);
 }
 
 function remove(id) {

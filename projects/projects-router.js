@@ -14,10 +14,10 @@ router.get("/projects", async (req, res, next) => {
 });
 
 router.get("/:userId/projects", async (req, res, next) => {
-  const { id } = req.params.userId;
+  const { userId } = req.params;
 
   projectsModel
-    .findProjects(id)
+    .findProjects(userId)
     .then((projects) => {
       if (projects.length) {
         res.json(projects);
@@ -28,6 +28,7 @@ router.get("/:userId/projects", async (req, res, next) => {
       }
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json({ message: "Failed to get projects" });
     });
 });
@@ -51,9 +52,7 @@ router.put("/:userId/projects/:id", async (req, res, next) => {
       req.params.id,
       changes
     );
-    res
-      .status(200)
-      .json({ message: "Successfully updated project!" }, updatedProject);
+    res.status(200).json(updatedProject);
   } catch (err) {
     next(err);
   }
