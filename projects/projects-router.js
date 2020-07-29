@@ -3,6 +3,7 @@ const projectsModel = require("./projects-model");
 
 const router = express.Router();
 
+//GET ALL PROJECTS
 router.get("/projects", async (req, res, next) => {
   try {
     const allProjects = await projectsModel.find();
@@ -13,6 +14,7 @@ router.get("/projects", async (req, res, next) => {
   }
 });
 
+//GET PROJECTS FOR SPECIFIC USER
 router.get("/:userId/projects", async (req, res, next) => {
   const { userId } = req.params;
 
@@ -33,10 +35,21 @@ router.get("/:userId/projects", async (req, res, next) => {
     });
 });
 
-router.get("/:userId/projects/:id", (req, res, next) => {});
+//ADD PROJECT
+router.post("/:userId/projects", async (req, res, next) => {
+  const getUserId = {
+    user_id: req.params.userId,
+    ...req.body,
+  };
+  try {
+    const newProject = await projectsModel.add(getUserId);
+    res.status(201).json(getUserId);
+  } catch (err) {
+    next(err);
+  }
+});
 
-router.post("/:userId/projects", (req, res, next) => {});
-
+//UPDATE PROJECT
 router.put("/:userId/projects/:id", async (req, res, next) => {
   const changes = {
     user_id: req.body.user_id,
@@ -58,6 +71,36 @@ router.put("/:userId/projects/:id", async (req, res, next) => {
   }
 });
 
-router.delete("/:userId/projects/:id", (req, res, next) => {});
+//DELETE PROJECT
+router.delete("/projects/:id", (req, res, next) => {
+  projectsModel
+    .remove(req.params.id)
+    .then(() => {
+      res.json({
+        message: "The project was removed successfully",
+      });
+    })
+    .catch(next);
+});
+
+// CUSTOM MIDDLEWARE
+
+// function validateUserId() {
+//   return (req, res, next) => {
+//     projectsModel
+//       .getByUserId(req.params.id)
+//       .then((user) => {
+//         if (user) {
+//           req.user = user;
+//           next();
+//         } else {
+//           res.status(400).json({
+//             message: "Invalid user id",
+//           });
+//         }
+//       })
+//       .catch(next);
+//   };
+// }
 
 module.exports = router;

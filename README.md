@@ -93,13 +93,7 @@
 
          * requires token from login function set to "Authorization" header.
 
-10. GET A users single project by project ID:
-
-        GET - /:userId/projects/:id
-
-        * requires token from login function set to "Authorization" header.
-
-11. ADD A project by user ID:
+10. ADD A project by user ID:
 
         POST - /:userId/projects
 
@@ -114,7 +108,7 @@
 
         * requires token from login function set to "Authorization" header.
 
-12. UPDATE A users project by project ID:
+11. UPDATE A users project by project ID:
 
         PUT - /:userId/projects/:id
 
@@ -129,9 +123,9 @@
 
         * requires token from login function set to "Authorization" header.
 
-13. DELETE A users project by project ID:
+12. DELETE A users project by project ID:
 
-        DELETE - /:userId/projects/:id
+        DELETE - /projects/:id
 
         * requires token from login function set to "Authorization" header.
 

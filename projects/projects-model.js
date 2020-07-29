@@ -5,11 +5,16 @@ function find() {
 }
 
 const iDs = async (userId, id) => {
-  const project = await db("projects")
-    .where({ user_id: userId, project_id: id })
-    .first();
+  const project = await db("projects").where({
+    user_id: userId,
+    project_id: id,
+  });
   return project;
 };
+
+function getByUserId(id) {
+  return db("users").where({ id }).first();
+}
 
 const update = (userId, id, changes) => {
   return db("projects")
@@ -19,6 +24,12 @@ const update = (userId, id, changes) => {
     })
     .update(changes);
 };
+
+function add(project) {
+  return db("projects")
+    .insert(project, "id")
+    .then(([id]) => getByUserId(id));
+}
 
 function findProjects(id) {
   return db("projects as p")
@@ -41,7 +52,9 @@ function remove(id) {
 module.exports = {
   find,
   iDs,
+  getByUserId,
   findProjects,
   update,
+  add,
   remove,
 };
