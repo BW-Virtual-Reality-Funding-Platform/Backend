@@ -24,13 +24,7 @@
 
 # `Endpoints`
 
-    BaseURL: https://vr-lambdaschool.herokuapp.com/api
-
-## - Project Overview Router
-
-1. Project Overview:
-
-   GET All Projects - /api/projects_dashboard/
+    BaseURL: https://vr-lambdaschool.herokuapp.com
 
 ## - Auth Router
 
