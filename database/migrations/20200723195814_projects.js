@@ -8,6 +8,7 @@ exports.up = async function (knex) {
       .inTable("users")
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
+    table.text("img_url");
     table.text("title").notNullable();
     table.text("description");
     table.decimal("goal_amount");
