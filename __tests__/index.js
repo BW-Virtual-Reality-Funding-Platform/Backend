@@ -36,4 +36,14 @@ describe("integration tests", () => {
     const res2 = await supertest(server).post("/api/auth/login").send(user1);
     expect(res2.statusCode).toBe(200);
   });
+
+  //-------projects-------
+  it("GET /projects - Return status 200", async () => {
+    const res1 = await supertest(server).post("/api/auth/register").send(user1);
+    const res2 = await supertest(server).post("/api/auth/login").send(user1);
+    const res3 = await supertest(server)
+      .get("/projects")
+      .set("Authorization", res2.body.token);
+    expect(res3.statusCode).toBe(200);
+  });
 });
