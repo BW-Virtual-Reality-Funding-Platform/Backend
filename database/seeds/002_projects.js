@@ -83,5 +83,17 @@ exports.seed = async function (knex) {
       amount_received: 150000,
       funding_completed: false,
     },
+    {
+      project_id: 8,
+      user_id: 2,
+      title: "Beat Saber",
+      img_url:
+        "https://www.roadtovr.com/wp-content/uploads/2018/11/beat-saber-8.jpg",
+      description:
+        "Use your meat saber to rock to the beat of this one hit wonder of a VR game",
+      goal_amount: 100000,
+      amount_received: 2000000,
+      funding_completed: false,
+    },
   ]);
 };
