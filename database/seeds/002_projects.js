@@ -4,6 +4,8 @@ exports.seed = async function (knex) {
       project_id: 1,
       user_id: 1,
       title: "Escape From Tarkov",
+      img_url:
+        "https://images.dexerto.com/uploads/2020/06/29163703/escape-from-tarkov-battlestate-games-june-29-patch.jpg",
       description:
         "A competetive FPS game not meant for the light hearted. Please drink your red bull before starting the game",
       goal_amount: 60000000,
