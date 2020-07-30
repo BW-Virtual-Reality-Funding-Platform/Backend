@@ -2,11 +2,11 @@ const supertest = require("supertest");
 const server = require("../api/server");
 const db = require("../database/config");
 
-// a global jest hook to run before each individual test
-beforeEach(async () => {
-  // re-run the seeds and start with a fresh database for each test
-  await db("users").truncate();
-});
+// // a global jest hook to run before each individual test
+// beforeEach(async () => {
+//   // re-run the seeds and start with a fresh database for each test
+//   await db("users").truncate();
+// });
 
 afterAll(async () => {
   // closes the database connection after running all the tests,
