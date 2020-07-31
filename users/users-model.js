@@ -8,20 +8,6 @@ function getProjects(id) {
   return db("projects").where("user_id", id);
 }
 
-function addProject(projectData) {
-  return db("projects")
-    .insert(projectData, "id")
-    .then((ids) => {
-      const [id] = ids;
-      return db("projects")
-        .where({ id })
-        .first()
-        .then((obj) => {
-          return getProjects(obj.user_id);
-        });
-    });
-}
-
 function findById(id) {
   return db("users").where({ id }).first();
 }
@@ -39,7 +25,6 @@ function remove(id) {
 }
 
 module.exports = {
-  addProject,
   find,
   findById,
   getProjects,

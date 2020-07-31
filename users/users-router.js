@@ -39,18 +39,6 @@ router.get("/api/users/:userId", async (req, res, next) => {
   }
 });
 
-//ADD PROJECT
-router.post("/:userId/projects", async (req, res) => {
-  const { id } = req.params;
-  const projectData = { ...req.body, user_id: id };
-  try {
-    const newProject = await usersModel.addProject(projectData);
-    res.status(201).json(newProject);
-  } catch (err) {
-    res.status(500).json({ message: "There was an error adding the project" });
-  }
-});
-
 //UPDATE USER
 router.put("/api/users/:userId", async (req, res, next) => {
   const toUpdate = {
