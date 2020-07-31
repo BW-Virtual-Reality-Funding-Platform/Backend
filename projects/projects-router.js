@@ -45,7 +45,7 @@ router.post("/:userId/projects", async (req, res, next) => {
     const newProject = await projectsModel.add(getUserId);
     res.status(201).json(getUserId);
   } catch (err) {
-    next(err);
+    res.status(500).json({ error: "There was an error adding the project" });
   }
 });
 

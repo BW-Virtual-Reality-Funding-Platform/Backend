@@ -13,6 +13,22 @@ router.get("/api/users", async (req, res, next) => {
   }
 });
 
+// //GET ALL PROJECTS (USING USERS DATABASE AS INITIAL PASSTHROUGH)
+// router.get("/:userId/projects", (req, res) => {
+//   const { id } = req.params;
+//   usersModel.getProjects(id)
+//     .then((project) => {
+//       if (project.length) {
+//         res.json(project);
+//       } else {
+//         res.status(404).json({ message: "User has no projects" });
+//       }
+//     })
+//     .catch((err) => {
+//       res.status(500).json({ message: "Failed to get plants" });
+//     });
+// });
+
 //GET USER BY ID
 router.get("/api/users/:userId", async (req, res, next) => {
   try {
@@ -37,6 +53,9 @@ router.put("/api/users/:userId", async (req, res, next) => {
     next(err);
   }
 });
+
+// //UPDATE PROJECT BY USER ID
+// router.put("/")
 
 // DELETE USER
 router.delete("/api/users/:userId", async (req, res, next) => {
