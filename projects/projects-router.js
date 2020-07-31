@@ -36,18 +36,18 @@ router.get("/:userId/projects", async (req, res, next) => {
 });
 
 //ADD PROJECT
-router.post("/:userId/projects", async (req, res, next) => {
-  const getUserId = {
-    user_id: req.params.userId,
-    ...req.body,
-  };
-  try {
-    const newProject = await projectsModel.add(getUserId);
-    res.status(201).json(getUserId);
-  } catch (err) {
-    res.status(500).json({ error: "There was an error adding the project" });
-  }
-});
+// router.post("/:userId/projects", async (req, res, next) => {
+//   const getUserId = {
+//     user_id: req.params.userId,
+//     ...req.body,
+//   };
+//   try {
+//     const newProject = await projectsModel.add(getUserId);
+//     res.status(201).json(getUserId);
+//   } catch (err) {
+//     res.status(500).json({ error: "There was an error adding the project" });
+//   }
+// });
 
 //UPDATE PROJECT
 router.put("/:userId/projects/:id", async (req, res, next) => {
