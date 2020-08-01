@@ -35,6 +35,7 @@ function findProjects(id) {
   return db("projects as p")
     .select(
       "u.id as user_id",
+      "p.project_id",
       "p.title",
       "p.description",
       "p.goal_amount",
@@ -43,6 +44,10 @@ function findProjects(id) {
     )
     .join("users as u", "p.user_id", "u.id")
     .where("p.user_id", id);
+}
+
+function updateProject(project, projectId) {
+  return db("projects").update(project).where({ id: projectId });
 }
 
 function remove(id) {
@@ -55,6 +60,7 @@ module.exports = {
   getByUserId,
   findProjects,
   update,
+  updateProject,
   add,
   remove,
 };
