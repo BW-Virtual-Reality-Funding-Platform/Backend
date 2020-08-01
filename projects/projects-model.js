@@ -36,6 +36,7 @@ function findProjects(id) {
     .select(
       "u.id as user_id",
       "p.project_id",
+      "p.img_url",
       "p.title",
       "p.description",
       "p.goal_amount",
