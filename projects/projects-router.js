@@ -83,24 +83,4 @@ router.delete("/projects/:id", (req, res, next) => {
     .catch(next);
 });
 
-// CUSTOM MIDDLEWARE
-
-// function validateUserId() {
-//   return (req, res, next) => {
-//     projectsModel
-//       .getByUserId(req.params.id)
-//       .then((user) => {
-//         if (user) {
-//           req.user = user;
-//           next();
-//         } else {
-//           res.status(400).json({
-//             message: "Invalid user id",
-//           });
-//         }
-//       })
-//       .catch(next);
-//   };
-// }
-
 module.exports = router;

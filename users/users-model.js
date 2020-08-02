@@ -16,10 +16,6 @@ function update(id, updates) {
   return db("users").where({ id }).update(updates);
 }
 
-function updateProject(project, project_id) {
-  return db("projects").update(project).where({ id: project_id });
-}
-
 function remove(id) {
   return db("users").where({ id }).del();
 }
@@ -29,6 +25,5 @@ module.exports = {
   findById,
   getProjects,
   update,
-  updateProject,
   remove,
 };
