@@ -24,6 +24,14 @@ const user2 = {
 };
 
 describe("integration tests", () => {
+  //-------Welcome Message-------
+  it("return welcome message", async () => {
+    const res = await supertest(server).get("/");
+    expect(res.body).toEqual({
+      message: "Welcome into the API!",
+    });
+  });
+
   //-------Registration-------
   it("POST /register - Receive status 201", async () => {
     const res = await supertest(server).post("/api/auth/register").send(user1);
